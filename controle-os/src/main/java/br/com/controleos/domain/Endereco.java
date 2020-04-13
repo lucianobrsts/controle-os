@@ -36,7 +36,7 @@ public class Endereco {
 	
 	@Column(name = "complemento")
 	private String complemento;
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

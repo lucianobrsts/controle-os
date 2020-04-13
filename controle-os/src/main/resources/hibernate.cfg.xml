@@ -33,6 +33,7 @@
 
 		<!-- Mapeamento das entidades -->
 		<mapping class="br.com.controleos.domain.Cliente" />
+		<mapping class="br.com.controleos.domain.Endereco" />
 
 	</session-factory>
 

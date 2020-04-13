@@ -2,9 +2,12 @@ package br.com.controleos.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +25,6 @@ public class Cliente {
 	@Column(name = "nome", length = 50, nullable = false)
 	private String nome;
 
-	@Column(name = "endereco")
-	private Endereco endereco;
-
 	@Column(name = "cpf")
 	private String cpf;
 
@@ -36,6 +36,10 @@ public class Cliente {
 
 	@Column(name = "telefone")
 	private String telefone;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "endereco_codigo", referencedColumnName = "codigo", nullable = false)
+	private Endereco endereco;
 
 	@Override
 	public int hashCode() {
