@@ -23,7 +23,7 @@ public class Cliente {
 	private String nome;
 
 	@Column(name = "endereco")
-	private String endereco;
+	private Endereco endereco;
 
 	@Column(name = "cpf")
 	private String cpf;
@@ -86,11 +86,11 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 
