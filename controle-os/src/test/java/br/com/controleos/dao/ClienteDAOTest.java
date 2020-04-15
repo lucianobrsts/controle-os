@@ -8,7 +8,7 @@ import org.junit.Test;
 import br.com.controleos.domain.Cliente;
 import br.com.controleos.domain.Endereco;
 
-public class ClienteTest {
+public class ClienteDAOTest {
 
 	@Ignore
 	@Test
