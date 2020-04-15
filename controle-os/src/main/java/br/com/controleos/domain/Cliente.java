@@ -16,7 +16,7 @@ public class Cliente {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "codigo")
+	@Column(name = "codigo", nullable = false)
 	private Long codigo;
 
 	@Column(name = "tipo_cliente", nullable = false)

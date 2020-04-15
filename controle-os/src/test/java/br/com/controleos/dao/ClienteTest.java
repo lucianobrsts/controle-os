@@ -1,34 +1,23 @@
 package br.com.controleos.dao;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 
 import br.com.controleos.domain.Cliente;
 import br.com.controleos.domain.Endereco;
 
-@RunWith(Suite.class)
-@SuiteClasses({})
 public class ClienteTest {
 
 	@Test
 	public void salvar() {
 		Cliente cliente = new Cliente();
 		cliente.setTipoCliente("Pessoa Física");
-		cliente.setNome("Luciano Brito");
+		cliente.setNome("Artur Oliveira");
 		cliente.setCpf("123.456.789.-00");
-		cliente.setEmail("lucianobrsts@yahoo.com.br");
+		cliente.setEmail("arturr00@gmail.com");
 		cliente.setTelefone("98888-5544");
 
-		Endereco endereco = new Endereco();
-		endereco.setCep("60440-000");
-		endereco.setLogradouro("Rua A");
-		endereco.setBairro("Bairro A");
-		endereco.setNumero("1212");
-		endereco.setCidade("Fortaleza");
-		endereco.setUf("Ceará");
-
+		EnderecoDAO enderecoDAO = new EnderecoDAO();
+		Endereco endereco = enderecoDAO.buscar(2L);
 		cliente.setEndereco(endereco);
 
 		ClienteDAO clienteDAO = new ClienteDAO();
