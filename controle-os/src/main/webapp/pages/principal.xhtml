@@ -4,16 +4,68 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
 <ui:composition template="/templates/modeloGeral.xhtml">
-
 	<ui:define name="conteudo">
+		<h3 style="margin-top: 10px; margin-left: 10px">Cadastro de Cliente</h3>
+		<h:form>
+			<p:tabView style="height: 400px;">
+				<p:tab title="Básico">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputLabel value="Tipo Cliente:" />
+						<h:inputText />
+						
+						<h:outputLabel value="Nome:" />
+						<h:inputText />
+						
+						<h:outputLabel value="CPF:" />
+						<h:inputText />
+						
+						<h:outputLabel value="CNPJ:" />
+						<h:inputText />
+						
+						<h:outputLabel value="Email:" />
+						<h:inputText />
+						
+						<h:outputLabel value="Telefone:" />
+						<h:inputText />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Endereço">
+					<h:panelGrid columns="2" cellpadding="10">
+					<h:outputLabel value="CEP:" />
+						<h:inputText />
+						
+						<h:outputLabel value="Logradouro:" />
+						<h:inputText />
+						
+						<h:outputLabel value="Bairro:" />
+						<h:inputText />
+						
+						<h:outputLabel value="Número:" />
+						<h:inputText />
+						
+						<h:outputLabel value="Cidade:" />
+						<h:inputText />
+						
+						<h:outputLabel value="UF:" />
+						<h:inputText />
 
-		<h1>Teste Controle Os</h1>
-
+						<h:outputLabel value="Complemento:" />
+						<h:inputText />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Outros">
+					<h:panelGrid columns="2" cellpadding="10">
+					</h:panelGrid>
+				</p:tab>
+			</p:tabView>
+			<h:panelGrid columns="2">
+				<h:commandButton value="Salvar" />
+				<h:commandButton value="Cancelar" />
+			</h:panelGrid>
+		</h:form>
 	</ui:define>
-
 </ui:composition>
-
 </html>

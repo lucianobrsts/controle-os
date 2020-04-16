@@ -16,6 +16,32 @@
 <h:body>
 	<p:growl id="mensagemGlobal" />
 
-	
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north"
+			header="Controle Ordem de Serviço - Control-OS" />
+
+    <p:layoutUnit position="south" size="50" header="Desenvolvido por Luciano Brito dos Santos" />
+
+    <p:layoutUnit position="west" size="200" header="Menu" resizable="true" collapsible="true">
+    <h:form id="formMenu">
+				<p:panelMenu id="panelMenu">
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Principal" icon="ui-icon-home" outcome="/pages/principal.xhtml" />
+						<p:menuitem value="Sair" icon="ui-icon-circle-close" action="#{autenticacaoBean.sair()}" />
+					</p:submenu>
+
+					<p:submenu label="Cadastros">
+						<p:menuitem value="Cliente" icon="ui-icon-person"/>
+						<p:menuitem value="Fornecedor" icon="ui-icon-contact"/>
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+    </p:layoutUnit>
+
+    <p:layoutUnit position="center">
+       <ui:insert name="conteudo" />
+    </p:layoutUnit>
+
+</p:layout>
 </h:body>
 </html>
