@@ -1,5 +1,7 @@
 package br.com.controleos.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "cliente")
@@ -24,6 +28,10 @@ public class Cliente {
 
 	@Column(name = "nome", length = 50, nullable = false)
 	private String nome;
+
+	@Column(name = "data_cadastro", nullable = false)
+	@Temporal(value = TemporalType.TIMESTAMP)
+	private Date dataCadastro;
 
 	@Column(name = "cpf")
 	private String cpf;
@@ -90,12 +98,12 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public Date getDataCadastro() {
+		return dataCadastro;
 	}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
 	public String getCpf() {
@@ -129,7 +137,13 @@ public class Cliente {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
-	
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 }

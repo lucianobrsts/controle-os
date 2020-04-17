@@ -36,31 +36,31 @@
 				</f:facet>
 
 				<p:column headerText="Código" style="text-align: center; width:6%;">
-					<h:outputText value="#{produto.codigo}" />
+					<h:outputText value="#{cliente.codigo}" />
 				</p:column>
 
-				<p:column headerText="Item" style="text-align: center;"
-					filterBy="#{produto.item.nome}">
-					<h:outputText value="#{produto.item.nome}"
+				<p:column headerText="Tipo Cliente" style="text-align: center;"
+					filterBy="#{cliente.tipoCliente}">
+					<h:outputText value="#{cliente.tipoCliente}"
+						style="text-transform: uppercase;" />
+				</p:column>
+				
+				<p:column headerText="Nome" style="text-align: center;">
+					<h:outputText value="#{cliente.nome}"
 						style="text-transform: uppercase;" />
 				</p:column>
 
 				<p:column headerText="Data Cadastro" style="text-align: center;">
-					<h:outputText value="#{produto.dataCadastro}"
+					<h:outputText value="#{cliente.dataCadastro}"
 						style="text-transform: uppercase;">
 						<f:convertDateTime pattern="dd/MM/yyyy"
 							timeZone="America/Sao_Paulo" />
 					</h:outputText>
 				</p:column>
 
-				<p:column headerText="Quantidade" style="text-align: center;">
-					<h:outputText value="#{produto.quantidadeEstoque}"
-						style="text-transform: uppercase;" />
-				</p:column>
-
-				<p:column headerText="Fornecedor"
+				<p:column headerText="Email"
 					style="text-align: center; width: 24%">
-					<h:outputText value="#{produto.fornecedor.nome}"
+					<h:outputText value="#{cliente.email}"
 						style="text-transform: uppercase;" />
 				</p:column>
 
@@ -78,56 +78,66 @@
 					</p:button>
 
 					<p:commandButton update=":formCliente"
-						oncomplete="PF('dialogProduto').show();" icon="ui-icon-search"
+						oncomplete="PF('dialogCliente').show();" icon="ui-icon-search"
 						title="Exibir">
-						<f:setPropertyActionListener value="#{produto}"
-							target="#{produtoBean.produtoCadastro}" />
+						<f:setPropertyActionListener value="#{cliente}"
+							target="#{clienteBean.clienteCadastro}" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 
-			<p:dialog header="Informaçõs de Produtos" widgetVar="dialogProduto"
+			<p:dialog header="Informaçõs de Clientes" widgetVar="dialogCliente"
 				modal="true" showEffect="fade" hideEffect="fade" resizable="false"
 				visible="false" appendTo="@(body)">
 
-				<h:panelGrid columns="2" id="panelInfoProduto">
-					<h:outputText value="Item:" />
+				<h:panelGrid columns="2" id="panelInfoCliente">
+					<h:outputText value="Código:" />
 					<h:inputText size="40" disabled="true"
 						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.item.nome}" />
+						value="#{clienteBean.clienteCadastro.codigo}" />
 
-					<h:outputText value="Tipo Unidade:" />
+					<h:outputText value="Tipo Cliente:" />
 					<h:inputText size="40" disabled="true"
 						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.item.tipoUnidade.nome}" />
+						value="#{clienteBean.clienteCadastro.tipoCliente}" />
 
-					<h:outputText value="Quantidade:" />
+					<h:outputText value="Nome:" />
 					<h:inputText size="40" disabled="true"
 						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.quantidadeEstoque}" />
+						value="#{clienteBean.clienteCadastro.nome}" />
 
 					<h:outputText value="Data Cadastro:" />
 					<h:inputText size="15" disabled="true"
-						value="#{produtoBean.produtoCadastro.dataCadastro}">
+						value="#{clienteBean.clienteCadastro.dataCadastro}">
 						<f:convertDateTime pattern="dd/MM/yyyy"
 							timeZone="America/Sao_Paulo" />
 					</h:inputText>
 
-					<h:outputText value="Preço Unitário:" />
+					<h:outputText value="CPF:" />
 					<h:inputText size="40" disabled="true"
 						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.precoUnitario}" />
+						value="#{clienteBean.clienteCadastro.cpf}" />
 
-					<h:outputText value="Fornecedor:" />
+					<h:outputText value="CNPJ:" />
 					<h:inputText size="40" disabled="true"
 						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.fornecedor.nome}" />
-				</h:panelGrid>
+						value="#{clienteBean.clienteCadastro.cnpj}" />
+				
+					<h:outputText value="Email:" />
+					<h:inputText size="40" disabled="true"
+						style="text-transform: uppercase;"
+						value="#{clienteBean.clienteCadastro.email}" />
+				
+					<h:outputText value="Telefone:" />
+					<h:inputText size="40" disabled="true"
+						style="text-transform: uppercase;"
+						value="#{clienteBean.clienteCadastro.telefone}" />
+					</h:panelGrid>
 
-				<p:outputPanel columns="1" style="text-align: center;">
+					<p:outputPanel columns="1" style="text-align: center;">
 					<p:separator />
 					<p:commandButton value="Cancelar"
-						oncomplete="PF('dialogProduto').hide();" />
+						oncomplete="PF('dialogCliente').hide();" />
 				</p:outputPanel>
 			</p:dialog>
 		</h:form>
