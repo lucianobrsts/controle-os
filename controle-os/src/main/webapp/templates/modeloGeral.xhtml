@@ -27,11 +27,11 @@
 				<p:panelMenu id="panelMenu">
 					<p:submenu label="Arquivo">
 						<p:menuitem value="Principal" icon="ui-icon-home" outcome="/pages/principal.xhtml" />
-						<p:menuitem value="Sair" icon="ui-icon-circle-close" action="#{autenticacaoBean.sair()}" />
+						<p:menuitem value="Sair" icon="ui-icon-closethick" action="#{autenticacaoBean.sair()}" />
 					</p:submenu>
 
 					<p:submenu label="Cadastros">
-						<p:menuitem value="Cliente" icon="ui-icon-person"/>
+						<p:menuitem value="Cliente" icon="ui-icon-person" outcome="/pages/clientePesquisa.xhtml"/>
 						<p:menuitem value="Fornecedor" icon="ui-icon-contact"/>
 					</p:submenu>
 				</p:panelMenu>
