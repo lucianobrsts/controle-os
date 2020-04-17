@@ -30,7 +30,7 @@
 
 				<f:facet name="footer">
 					<p:button value="Novo" icon="ui-icon-circle-plus"
-						outcome="/pages/clienteCadastro.xhtml?faces-redirect=true">
+						outcome="/pages/produtoCadastro.xhtml?faces-redirect=true">
 						<f:param name="clienteAcao" value="Novo" />
 					</p:button>
 				</f:facet>
@@ -66,18 +66,18 @@
 
 				<p:column headerText="Opção" style="text-align: center; width: 11%;">
 					<p:button icon="ui-icon-trash" title="Excluir"
-						outcome="/pages/clienteCadastro.xhtml">
+						outcome="/pages/produtoCadastro.xhtml">
 						<f:param name="produtoCodigo" value="#{produto.codigo}" />
 						<f:param name="produtoAcao" value="Excluir" />
 					</p:button>
 
 					<p:button icon="ui-icon-pencil" title="Editar"
-						outcome="/pages/clienteCadastro.xhtml">
+						outcome="/pages/produtoCadastro.xhtml">
 						<f:param name="produtoCodigo" value="#{produto.codigo}" />
 						<f:param name="produtoAcao" value="Editar" />
 					</p:button>
 
-					<p:commandButton update=":formCliente"
+					<p:commandButton update=":formProduto"
 						oncomplete="PF('dialogProduto').show();" icon="ui-icon-search"
 						title="Exibir">
 						<f:setPropertyActionListener value="#{produto}"
