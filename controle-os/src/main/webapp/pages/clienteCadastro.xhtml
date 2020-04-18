@@ -4,132 +4,77 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
 <ui:composition template="/templates/modeloGeral.xhtml">
 	<ui:define name="metadata">
 		<f:metadata>
-			<f:event listener="#{clienteBean.carregarPesquisa}"
-				type="preRenderView" />
+			<f:viewParam name="clienteCodigo" value="#{clienteBean.codigo}" />
+			<f:viewParam name="clienteAcao" value="#{clienteBean.acao}" />
+
+			<f:event listener="#{clienteBean.carregarCadastro}"
+				type="preRenderView"></f:event>
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form id="formCliente">
+		<h:form id="formClienteCadastro" prependId="false">
+
 			<p:toolbar>
 				<f:facet name="left">
-					<h:outputText value="Cliente" />
+					<h:outputText value="Ficha Cadastral - Cliente" />
 				</f:facet>
 			</p:toolbar>
 
 			<p:separator />
 
-			<p:dataTable emptyMessage="Nenhum registro encontrado..."
-				value="#{clienteBean.listaClientes}" filteredValue="" var="cliente"
-				paginator="true" rows="10">
+			<h:panelGrid columns="2" id="panelProdutoCadastro">
+				<p:outputLabel value="tipo Cliente:" />
+				<p:inputText maxlength="10" size="15" id="tipoCliente"
+					readonly="#{produtoBean.acao == 'Excluir'}" required="true"
+					requiredMessage="O campo Quantidade é obrigatório."
+					value="#{produtoBean.produtoCadastro.quantidadeEstoque}">
+					<f:validateBean />
+				</p:inputText>
 
-				<f:facet name="footer">
-					<p:button value="Novo" icon="ui-icon-circle-plus"
-						outcome="/pages/produtoCadastro.xhtml?faces-redirect=true">
-						<f:param name="clienteAcao" value="Novo" />
-					</p:button>
-				</f:facet>
+				<p:outputLabel value="Data Cadastro:" />
+				<p:calendar value="#{produtoBean.produtoCadastro.dataCadastro}"
+					readonly="#{produtoBean.acao == 'Excluir'}" required="true"
+					size="15" mask="true" pattern="dd/MM/yyyy"
+					requiredMessage="O campo Data Cadastro é obrigatório." />
 
-				<p:column headerText="Código" style="text-align: center; width:6%;">
-					<h:outputText value="#{produto.codigo}" />
-				</p:column>
 
-				<p:column headerText="Item" style="text-align: center;"
-					filterBy="#{produto.item.nome}">
-					<h:outputText value="#{produto.item.nome}"
-						style="text-transform: uppercase;" />
-				</p:column>
+				<p:outputLabel value="Preço Unitário:" />
+				<p:inputText maxlength="10" size="15" id="preco"
+					readonly="#{produtoBean.acao == 'Excluir'}" required="true"
+					requiredMessage="O campo Preço Unitário é obrigatório."
+					value="#{produtoBean.produtoCadastro.precoUnitario}">
+					<f:validateBean />
+				</p:inputText>
 
-				<p:column headerText="Data Cadastro" style="text-align: center;">
-					<h:outputText value="#{produto.dataCadastro}"
-						style="text-transform: uppercase;">
-						<f:convertDateTime pattern="dd/MM/yyyy"
-							timeZone="America/Sao_Paulo" />
-					</h:outputText>
-				</p:column>
+			</h:panelGrid>
 
-				<p:column headerText="Quantidade" style="text-align: center;">
-					<h:outputText value="#{produto.quantidadeEstoque}"
-						style="text-transform: uppercase;" />
-				</p:column>
+			<h:panelGrid columns="5">
+				<p:commandButton value="Novo" actionListener="#{produtoBean.novo}"
+					update=":formProdutoCadastro:panelProdutoCadastro"
+					rendered="#{produtoBean.acao == 'Novo'}" />
 
-				<p:column headerText="Fornecedor"
-					style="text-align: center; width: 24%">
-					<h:outputText value="#{produto.fornecedor.nome}"
-						style="text-transform: uppercase;" />
-				</p:column>
+				<p:commandButton value="Salvar"
+					actionListener="#{produtoBean.salvar}"
+					update=":mensagemGlobal :formProdutoCadastro:panelProdutoCadastro"
+					rendered="#{produtoBean.acao == 'Novo'}" />
 
-				<p:column headerText="Opção" style="text-align: center; width: 11%;">
-					<p:button icon="ui-icon-trash" title="Excluir"
-						outcome="/pages/produtoCadastro.xhtml">
-						<f:param name="produtoCodigo" value="#{produto.codigo}" />
-						<f:param name="produtoAcao" value="Excluir" />
-					</p:button>
+				<p:commandButton value="Excluir" icon="ui-icon-trash"
+					actionListener="#{produtoBean.excluir}" update=":mensagemGlobal"
+					rendered="#{produtoBean.acao == 'Excluir'}" />
 
-					<p:button icon="ui-icon-pencil" title="Editar"
-						outcome="/pages/produtoCadastro.xhtml">
-						<f:param name="produtoCodigo" value="#{produto.codigo}" />
-						<f:param name="produtoAcao" value="Editar" />
-					</p:button>
+				<p:commandButton value="Editar" icon="ui-icon-pencil"
+					actionListener="#{produtoBean.editar}" update=":mensagemGlobal"
+					rendered="#{produtoBean.acao == 'Editar'}" />
 
-					<p:commandButton update=":formProduto"
-						oncomplete="PF('dialogProduto').show();" icon="ui-icon-search"
-						title="Exibir">
-						<f:setPropertyActionListener value="#{produto}"
-							target="#{produtoBean.produtoCadastro}" />
-					</p:commandButton>
-				</p:column>
-			</p:dataTable>
-
-			<p:dialog header="Informaçõs de Produtos" widgetVar="dialogProduto"
-				modal="true" showEffect="fade" hideEffect="fade" resizable="false"
-				visible="false" appendTo="@(body)">
-
-				<h:panelGrid columns="2" id="panelInfoProduto">
-					<h:outputText value="Item:" />
-					<h:inputText size="40" disabled="true"
-						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.item.nome}" />
-
-					<h:outputText value="Tipo Unidade:" />
-					<h:inputText size="40" disabled="true"
-						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.item.tipoUnidade.nome}" />
-
-					<h:outputText value="Quantidade:" />
-					<h:inputText size="40" disabled="true"
-						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.quantidadeEstoque}" />
-
-					<h:outputText value="Data Cadastro:" />
-					<h:inputText size="15" disabled="true"
-						value="#{produtoBean.produtoCadastro.dataCadastro}">
-						<f:convertDateTime pattern="dd/MM/yyyy"
-							timeZone="America/Sao_Paulo" />
-					</h:inputText>
-
-					<h:outputText value="Preço Unitário:" />
-					<h:inputText size="40" disabled="true"
-						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.precoUnitario}" />
-
-					<h:outputText value="Fornecedor:" />
-					<h:inputText size="40" disabled="true"
-						style="text-transform: uppercase;"
-						value="#{produtoBean.produtoCadastro.fornecedor.nome}" />
-				</h:panelGrid>
-
-				<p:outputPanel columns="1" style="text-align: center;">
-					<p:separator />
-					<p:commandButton value="Cancelar"
-						oncomplete="PF('dialogProduto').hide();" />
-				</p:outputPanel>
-			</p:dialog>
+				<p:button value="Voltar"
+					outcome="/pages/produtoPesquisa.xhtml?faces-redirect=true" />
+			</h:panelGrid>
 		</h:form>
 	</ui:define>
 </ui:composition>

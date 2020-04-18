@@ -28,24 +28,16 @@
 				value="#{clienteBean.listaClientes}" filteredValue="" var="cliente"
 				paginator="true" rows="10">
 
-				<f:facet name="footer">
-					<p:button value="Novo" icon="ui-icon-circle-plus"
-						outcome="/pages/clienteCadastro.xhtml?faces-redirect=true">
-						<f:param name="clienteAcao" value="Novo" />
-					</p:button>
-				</f:facet>
-
 				<p:column headerText="Código" style="text-align: center; width:6%;">
 					<h:outputText value="#{cliente.codigo}" />
 				</p:column>
 
-				<p:column headerText="Tipo Cliente" style="text-align: center;"
-					filterBy="#{cliente.tipoCliente}">
+				<p:column headerText="Tipo Cliente" style="text-align: center;">
 					<h:outputText value="#{cliente.tipoCliente}"
 						style="text-transform: uppercase;" />
 				</p:column>
 				
-				<p:column headerText="Nome" style="text-align: center;">
+				<p:column headerText="Nome" style="text-align: center;" filterBy="#{cliente.tipoCliente}">
 					<h:outputText value="#{cliente.nome}"
 						style="text-transform: uppercase;" />
 				</p:column>
@@ -84,8 +76,16 @@
 							target="#{clienteBean.clienteCadastro}" />
 					</p:commandButton>
 				</p:column>
+				
+				<f:facet name="footer">
+					<p:commandButton icon="ui-icon-circle-plus" value="Novo"
+					actionListener="#{clienteBean.prepararNovo}" 
+					oncomplete="PF('dialogclienteCadastro').show();"
+					update=":formContatoNovo:panelContatoNovo"/>
+				
+				</f:facet>
 			</p:dataTable>
-
+			
 			<p:dialog header="Informaçõs de Clientes" widgetVar="dialogCliente"
 				modal="true" showEffect="fade" hideEffect="fade" resizable="false"
 				visible="false" appendTo="@(body)">
@@ -141,6 +141,68 @@
 				</p:outputPanel>
 			</p:dialog>
 		</h:form>
+			
+			<p:dialog header="Cadastro de Clientes" widgetVar="dialogclienteCadastro" 
+			modal="true" showEffect="fade" hideEffect="fade" resizable="false" 
+			visible="false" appendTo="@(body)">
+			
+			<h:form id="formContatoNovo">
+				<h:panelGrid id="panelContatoNovo" columns="2">
+					<h:outputText value="Tipo Cliente:" />
+					<h:inputText maxlength="50" size="30"
+						class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all"
+						style="text-transform: uppercase;" required="true"
+						requiredMessage="O tipo do cliente é obrigatório."
+						value="#{clienteBean.clienteCadastro.tipoCliente}" />
+
+					<h:outputText value="Nome:" />
+					<h:inputText maxlength="50" size="40" 
+						class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all"
+						style="text-transform: uppercase;" required="true"
+						requiredMessage="O nome do cliente é obrigatório."
+						value="#{clienteBean.clienteCadastro.nome}" />
+
+					<p:outputLabel value="Data Cadastro:" />
+					<p:calendar value="#{produtoBean.produtoCadastro.dataCadastro}"
+						required="true" size="15" mask="true" pattern="dd/MM/yyyy"
+						requiredMessage="O campo Data Cadastro é obrigatório." />
+
+					<h:outputText value="CPF:" />
+					<p:inputMask mask="999.999.999-99" id="cpf" maxlength="14" size="15" 
+					value="#{clienteBean.clienteCadastro.cpf}" />
+
+					<h:outputText value="CNPJ:" />
+					<p:inputMask mask="99.999.999/9999-99" id="cnpj" maxlength="18" size="20"
+						value="#{clienteBean.clienteCadastro.cnpj}" />
+				
+					<h:outputText value="Email:" />
+					<h:inputText maxlength="50" size="40"
+						validatorMessage="Email inválido."
+						class="ui-inputfield ui-inputmask ui-widget ui-state-default ui-corner-all"
+						style="text-transform: uppercase;"
+						value="#{clienteBean.clienteCadastro.email}">
+						
+						<f:validateRegex
+							pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+						</h:inputText>
+				
+					<h:outputText value="Telefone:" />
+					<p:inputMask mask="(99) 9999-9999" maxlength="14" size="20"  
+						value="#{clienteBean.clienteCadastro.telefone}" />
+						
+					<h:outputLabel value="Celular" />	
+					<p:inputMask mask="(99) 99999-9999" maxlength="15" size="20"
+					value="#{clienteBean.clienteCadastro.celular}"/>
+				</h:panelGrid>
+				
+				<p:separator />
+				
+				<h:panelGrid columns="2">
+					<h:commandButton value="Gravar"/>
+					<h:commandButton value="Cancelar"/>
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
 	</ui:define>
 </ui:composition>
 </html>

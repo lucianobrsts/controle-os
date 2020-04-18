@@ -3,11 +3,11 @@ package br.com.controleos.bean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import org.omnifaces.util.Messages;
-import org.omnifaces.util.Messages.Message;
 
 import br.com.controleos.dao.ClienteDAO;
 import br.com.controleos.domain.Cliente;
@@ -23,6 +23,8 @@ public class ClienteBean implements Serializable {
 	private static final long serialVersionUID = 1664755820917650224L;
 	private Cliente clienteCadastro;
 	private List<Cliente> listaClientes;
+	private String acao;
+	private Long codigo;
 
 	public void carregarPesquisa() {
 		try {
@@ -31,6 +33,15 @@ public class ClienteBean implements Serializable {
 		} catch (RuntimeException ex) {
 			Messages.addGlobalError("Erro ao tentar listar clientes: ", ex.getMessage());
 		}
+	}
+
+	@PostConstruct
+	public void prepararNovo() {
+		clienteCadastro = new Cliente();
+	}
+
+	public void carregarCadastro() {
+
 	}
 
 	public Cliente getClienteCadastro() {
@@ -47,6 +58,26 @@ public class ClienteBean implements Serializable {
 
 	public void setListaClientes(List<Cliente> listaClientes) {
 		this.listaClientes = listaClientes;
+	}
+
+	public String getAcao() {
+		return acao;
+	}
+
+	public void setAcao(String acao) {
+		this.acao = acao;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
 }

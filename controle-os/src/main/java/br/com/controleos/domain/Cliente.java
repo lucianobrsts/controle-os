@@ -44,6 +44,9 @@ public class Cliente {
 
 	@Column(name = "telefone")
 	private String telefone;
+	
+	@Column(name = "celular", nullable = false)
+	private String celular;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "endereco_codigo", referencedColumnName = "codigo", nullable = false)
@@ -136,6 +139,15 @@ public class Cliente {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	
+
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
 
 	public Endereco getEndereco() {
