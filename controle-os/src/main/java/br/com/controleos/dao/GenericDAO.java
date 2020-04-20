@@ -25,7 +25,7 @@ public class GenericDAO<Entidade> {
 
 		try {
 			transacao = session.beginTransaction();
-			session.save(entidade);
+			session.persist(entidade);
 			transacao.commit();
 		} catch (RuntimeException ex) {
 			if (transacao != null) {

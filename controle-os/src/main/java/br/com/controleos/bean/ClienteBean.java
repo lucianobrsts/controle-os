@@ -17,9 +17,6 @@ import br.com.controleos.domain.Cliente;
 @ViewScoped
 public class ClienteBean implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1664755820917650224L;
 	private Cliente clienteCadastro;
 	private List<Cliente> listaClientes;
@@ -33,6 +30,18 @@ public class ClienteBean implements Serializable {
 		} catch (RuntimeException ex) {
 			Messages.addGlobalError("Erro ao tentar listar clientes: ", ex.getMessage());
 		}
+	}
+
+	public void salvar() {
+		ClienteDAO clienteDAO = new ClienteDAO();
+		try {
+			clienteDAO.salvar(clienteCadastro);
+			clienteCadastro = new Cliente();
+			Messages.addGlobalInfo("Produto salvo com sucesso...");
+		} catch (RuntimeException e) {
+			Messages.addGlobalError("Erro ao tentar incluir um cliente: " + e.getMessage());
+		}
+
 	}
 
 	@PostConstruct
