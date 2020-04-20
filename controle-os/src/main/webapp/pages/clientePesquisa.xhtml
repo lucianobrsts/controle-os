@@ -147,7 +147,7 @@
 			visible="false" appendTo="@(body)">
 			
 			<h:form id="formClienteNovo">
-			<p:tabView style="height: 400px; width: 600px;">
+			<p:tabView style="height: 420px; width: 600px;">
 				<p:tab title="Dados Cliente">
 					
 					<h:panelGrid id="panelClienteNovo" columns="2" cellpadding="10">
@@ -203,30 +203,43 @@
 						value="#{clienteBean.clienteCadastro.celular}"/>
 					</h:panelGrid>
 				</p:tab>
+				
 				<p:tab title="Endereço">
-					<h:panelGrid columns="2" cellpadding="10">
+					<h:panelGrid columns="2" cellpadding="10" id="panelEnderecoCorreios">
 					<h:outputLabel value="CEP:" />
-						<h:inputText />
+						<p:inputText id="cep" value="#{enderecoCorreiosBean.cep}"/>
+						
+						<h:outputLabel />
+						<h:commandButton value="Buscar CEP" style="float: right;"> 
+							<f:ajax event="click" render="panelEnderecoCorreios" execute="@this cep"
+							listener="#{enderecoCorreiosBean.carregarEnderecoCorreios}"/>
+						</h:commandButton>
 						
 						<h:outputLabel value="Logradouro:" />
-						<h:inputText />
+						<h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.logradouro}" />
 						
 						<h:outputLabel value="Bairro:" />
-						<h:inputText />
+						<h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.bairro}" />
 						
 						<h:outputLabel value="Número:" />
-						<h:inputText />
+						<h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.numero}" />
 						
 						<h:outputLabel value="Cidade:" />
-						<h:inputText />
+						<h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.localidade}" />
 						
 						<h:outputLabel value="UF:" />
-						<h:inputText />
+						<h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.uf}" />
 
 						<h:outputLabel value="Complemento:" />
-						<h:inputText />
+						<h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.complemento}" />
 					</h:panelGrid>
 				</p:tab>
+				
+				<p:tab title="Equipamento">
+					<h:panelGrid columns="2" cellpadding="10">
+					</h:panelGrid>
+				</p:tab>
+				
 				<p:tab title="Outros">
 					<h:panelGrid columns="2" cellpadding="10">
 					</h:panelGrid>
