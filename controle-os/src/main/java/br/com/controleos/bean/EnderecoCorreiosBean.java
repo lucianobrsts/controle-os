@@ -31,10 +31,10 @@ public class EnderecoCorreiosBean implements Serializable {
 		enderecoCorreios = new EnderecoCorreios();
 		Client c = Client.create();
 		WebResource wr = c.resource("http://viacep.com.br/ws/" + this.getCep() + "/json/");
-		System.out.println("Chamou a URI...");
+		//System.out.println("Chamou a URI...");
 		this.enderecoCorreios = servico.buscarEnderecoPor(wr.get(String.class));
-		String JSON = wr.get(String.class);
-		System.out.println(JSON);
+		//String JSON = wr.get(String.class);
+		//System.out.println(JSON);
 		return this.getEnderecoCorreios();
 	}
 

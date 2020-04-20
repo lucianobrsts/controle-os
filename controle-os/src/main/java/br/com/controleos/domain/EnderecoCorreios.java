@@ -17,7 +17,7 @@ public class EnderecoCorreios {
 	@Expose
 	private String logradouro;
 
-	@SerializedName("complemento")
+	@SerializedName("complementos")
 	@Expose
 	private String complemento;
 

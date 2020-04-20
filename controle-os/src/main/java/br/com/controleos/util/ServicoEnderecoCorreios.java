@@ -12,7 +12,7 @@ public class ServicoEnderecoCorreios implements Serializable {
 	private static final long serialVersionUID = -7020301141886779638L;
 
 	public EnderecoCorreios buscarEnderecoPor(String urlJson) {
-		System.out.println("Chamou o serviço...");
+		//System.out.println("Chamou o serviço...");
 
 		final GsonBuilder gsonBuilder = new GsonBuilder();
 		final Gson gson = gsonBuilder.create();
