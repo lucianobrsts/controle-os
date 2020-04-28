@@ -329,6 +329,29 @@
                         <h:outputLabel value="CEP:" />
                         <p:inputText id="cep" value="#{enderecoCorreiosBean.cep}"/>
                         <h:outputLabel />
+                      
+                        <h:outputLabel value="Logradouro:" />
+                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.logradouro}" />
+                        
+                        <h:outputLabel value="Bairro:" />
+                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.bairro}" />
+                        
+                        <h:outputLabel value="Número:" />
+                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.numero}" />
+                       
+                        <h:outputLabel value="Cidade:" />
+                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.localidade}" />
+                       
+                        <h:outputLabel value="UF:" />
+                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.uf}" />
+                       
+                        <h:outputLabel value="Complemento:" />
+                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.complemento}" />
+                        
+                        <!-- 
+                         <h:outputLabel value="CEP:" />
+                        <p:inputText id="cep" value="#{enderecoCorreiosBean.cep}"/>
+                        <h:outputLabel />
                        
                         <h:commandButton value="Buscar CEP" style="float: right;">
                            <f:ajax event="click" render="panelEnderecoCorreios" execute="@this cep"
@@ -352,6 +375,7 @@
                        
                         <h:outputLabel value="Complemento:" />
                         <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.complemento}" />
+                        -->
                      </h:panelGrid>
                   </p:tab>
                  
