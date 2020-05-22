@@ -205,14 +205,36 @@
                   
                   <p:tab title="Endereço">
                      <h:panelGrid columns="2" cellpadding="10" id="panelEnderecoCorreios">
+                   
+                  		<h:outputLabel value="CEP:" />
+                        <p:inputText value="#{clienteBean.clienteCadastro.endereco.cep}"/>
+                      
+                        <h:outputLabel value="Logradouro:" />
+                        <p:inputText value="#{clienteBean.clienteCadastro.endereco.logradouro}" />
+                        
+                        <h:outputLabel value="Bairro:" />
+                        <p:inputText value="#{clienteBean.clienteCadastro.endereco.bairro}" />
+                        
+                        <h:outputLabel value="Número:" />
+                        <p:inputText value="#{clienteBean.clienteCadastro.endereco.numero}" />
                        
+                        <h:outputLabel value="Cidade:" />
+                        <p:inputText value="#{clienteBean.clienteCadastro.endereco.cidade}" />
+                       
+                        <h:outputLabel value="UF:" />
+                        <p:inputText value="#{clienteBean.clienteCadastro.endereco.cidade}" />
+                       
+                        <h:outputLabel value="Complemento:" />
+                        <p:inputText value="#{clienteBean.clienteCadastro.endereco.complemento}" />
+                   
+                  		 <!--     
                         <h:outputLabel value="CEP:" />
-                        <p:inputText id="cep" value="#{enderecoCorreiosBean.cep}"/>
+                        <p:inputText id="cep" value="#{enderecoBean.enderecoCadastro.cep}"/>
                         <h:outputLabel />
                        
                         <h:commandButton value="Buscar CEP" style="float: right;">
                            <f:ajax event="click" render="panelEnderecoCorreios" execute="@this cep"
-                              listener="#{enderecoCorreiosBean.carregarEnderecoCorreios}"/>
+                              />
                         </h:commandButton>
                       
                         <h:outputLabel value="Logradouro:" />
@@ -232,6 +254,7 @@
                         
                         <h:outputLabel value="Complemento:" />
                         <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.complemento}" />
+                        -->
                      </h:panelGrid>
                   </p:tab>
                  
@@ -327,26 +350,26 @@
                      <h:panelGrid columns="2" cellpadding="10" id="panelEnderecoCorreios">
                        
                         <h:outputLabel value="CEP:" />
-                        <p:inputText id="cep" value="#{enderecoCorreiosBean.cep}"/>
+                        <p:inputText id="cep" value="#{enderecoBean.enderecoCadastro.cep}"/>
                         <h:outputLabel />
                       
                         <h:outputLabel value="Logradouro:" />
-                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.logradouro}" />
+                        <h:inputText value="#{enderecoBean.enderecoCadastro.logradouro}" />
                         
                         <h:outputLabel value="Bairro:" />
-                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.bairro}" />
+                        <h:inputText value="#{enderecoBean.enderecoCadastro.bairro}" />
                         
                         <h:outputLabel value="Número:" />
-                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.numero}" />
+                        <h:inputText value="#{enderecoBean.enderecoCadastro.numero}" />
                        
                         <h:outputLabel value="Cidade:" />
-                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.localidade}" />
+                        <h:inputText value="#{enderecoBean.enderecoCadastro.cidade}" />
                        
                         <h:outputLabel value="UF:" />
-                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.uf}" />
+                        <h:inputText value="#{enderecoBean.enderecoCadastro.uf}" />
                        
                         <h:outputLabel value="Complemento:" />
-                        <h:inputText value="#{enderecoCorreiosBean.enderecoCorreios.complemento}" />
+                        <h:inputText value="#{enderecoBean.enderecoCadastro.complemento}" />
                         
                         <!-- 
                          <h:outputLabel value="CEP:" />
@@ -355,7 +378,7 @@
                        
                         <h:commandButton value="Buscar CEP" style="float: right;">
                            <f:ajax event="click" render="panelEnderecoCorreios" execute="@this cep"
-                              listener="#{enderecoCorreiosBean.carregarEnderecoCorreios}"/>
+                              />
                         </h:commandButton>
                       
                         <h:outputLabel value="Logradouro:" />

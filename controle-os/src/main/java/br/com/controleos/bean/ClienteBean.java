@@ -11,6 +11,7 @@ import org.omnifaces.util.Messages;
 
 import br.com.controleos.dao.ClienteDAO;
 import br.com.controleos.domain.Cliente;
+import br.com.controleos.domain.Endereco;
 
 @SuppressWarnings("deprecation")
 @ManagedBean
@@ -19,6 +20,7 @@ public class ClienteBean implements Serializable {
 
 	private static final long serialVersionUID = 1664755820917650224L;
 	private Cliente clienteCadastro;
+	private Endereco enderecoCadastro;
 	private List<Cliente> listaClientes;
 	private String acao;
 	private Long codigo;
@@ -34,6 +36,7 @@ public class ClienteBean implements Serializable {
 
 	public void salvar() {
 		ClienteDAO clienteDAO = new ClienteDAO();
+
 		try {
 			clienteDAO.salvar(clienteCadastro);
 			clienteCadastro = new Cliente();
@@ -59,6 +62,15 @@ public class ClienteBean implements Serializable {
 
 	public void setClienteCadastro(Cliente clienteCadastro) {
 		this.clienteCadastro = clienteCadastro;
+
+	}
+
+	public Endereco getEnderecoCadastro() {
+		return enderecoCadastro;
+	}
+
+	public void setEnderecoCadastro(Endereco enderecoCadastro) {
+		this.enderecoCadastro = enderecoCadastro;
 	}
 
 	public List<Cliente> getListaClientes() {
