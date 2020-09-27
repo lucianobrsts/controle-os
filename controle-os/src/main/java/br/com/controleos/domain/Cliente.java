@@ -1,5 +1,6 @@
 package br.com.controleos.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente {
+public class Cliente implements Serializable {
+
+	private static final long serialVersionUID = -67417923925910731L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
