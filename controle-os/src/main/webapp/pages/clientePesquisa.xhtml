@@ -163,10 +163,9 @@
                         </h:selectOneRadio>
                        
                         <p:outputPanel id="pnlPessoa">
-                           <!-- <h:outputLabel id="lbCpf" value="CPF:" for="cpf2" rendered="#{clienteBean.clienteCadastro.tipoCliente=='Física'}" />  -->
                            <p:inputMask mask="999.999.999-99" id="cpf2" size="25" rendered="#{clienteBean.clienteCadastro.tipoCliente=='Física'}"
                               value="#{clienteBean.clienteCadastro.cpf}" placeholder="CPF"/>
-                           <!-- <h:outputLabel id="lbCnpj" value="CNPJ:" for="cnpj2" rendered="#{clienteBean.clienteCadastro.tipoCliente=='Jurídica'}" /> -->
+
                            <p:inputMask mask="99.999.999/9999-99" id="cnpj2" size="25" rendered="#{clienteBean.clienteCadastro.tipoCliente=='Jurídica'}"
                               value="#{clienteBean.clienteCadastro.cnpj}" placeholder="CNPJ"/>
                         </p:outputPanel>
