@@ -129,6 +129,9 @@ public class Cliente implements Serializable {
 	}
 
 	public Endereco getEndereco() {
+		if (endereco == null) {
+			endereco = new Endereco();
+		}
 		return endereco;
 	}
 
