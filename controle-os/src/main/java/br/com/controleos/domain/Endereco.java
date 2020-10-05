@@ -35,5 +35,4 @@ public class Endereco {
 	public void setBairro(String bairro) {
 		this.bairro = bairro.toUpperCase();
 	}
-
 }
