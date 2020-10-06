@@ -12,7 +12,7 @@ import br.com.controleos.domain.Endereco;
 
 public class ClienteDAOTest {
 
-	@Ignore
+	@Test
 	public void salvar() {
 		Cliente cliente = new Cliente();
 		cliente.setTipoCliente("Pessoa Física");
@@ -20,7 +20,7 @@ public class ClienteDAOTest {
 		cliente.setDataCadastro(new Date());
 		cliente.setCpf("123.456.789.-00");
 
-		Endereco endereco = new Endereco();
+		Endereco endereco = new Endereco(;)
 		endereco.setLogradouro("Máriao de Andrade");
 		endereco.setNumero(123);
 		endereco.setBairro("Bela Vista");
