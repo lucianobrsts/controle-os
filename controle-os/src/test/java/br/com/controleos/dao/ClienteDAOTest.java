@@ -1,28 +1,35 @@
 package br.com.controleos.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.controleos.domain.Cliente;
+import br.com.controleos.domain.Contato;
 import br.com.controleos.domain.Endereco;
 
 public class ClienteDAOTest {
 
 	@Ignore
-	@Test
 	public void salvar() {
 		Cliente cliente = new Cliente();
 		cliente.setTipoCliente("Pessoa Física");
 		cliente.setNome("Artur Oliveira");
+		cliente.setDataCadastro(new Date());
 		cliente.setCpf("123.456.789.-00");
-		cliente.setEmail("arturr00@gmail.com");
-		cliente.setTelefone("98888-5544");
 
-		EnderecoDAO enderecoDAO = new EnderecoDAO();
-		Endereco endereco = enderecoDAO.buscar(2L);
+		Endereco endereco = new Endereco();
+		endereco.setLogradouro("Máriao de Andrade");
+		endereco.setNumero(123);
+		endereco.setBairro("Bela Vista");
 		cliente.setEndereco(endereco);
+
+		Contato contato = new Contato();
+		contato.setEmail("lucianobrsts@yahoo.com.br");
+		contato.setCelular("(85) 98888-0281");
+		cliente.setContato(contato);
 
 		ClienteDAO clienteDAO = new ClienteDAO();
 		clienteDAO.salvar(cliente);
