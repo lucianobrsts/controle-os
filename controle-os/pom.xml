@@ -8,23 +8,25 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven-jar-plugin.version>3.0</maven-jar-plugin.version>
 	</properties>
 
+	<!-- Parâmetros de execução -->
 	<build>
 		<!-- Nome do projeto empacotado -->
-		<finalName>ControleOs</finalName>
+		<finalName>CE-Admin</finalName>
 
+		<!-- Plugins -->
 		<plugins>
 			<!-- Compilador -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
 				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -40,34 +42,12 @@
 	</repositories>
 
 	<dependencies>
-		<!-- Commons Lang (Utilidades) -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.1</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<!-- API de Servlet -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Javax faces (Mojarra) - JSF -->
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.faces</artifactId>
-			<version>2.4.0</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/javax.enterprise/cdi-api -->
+		<!-- CDI -->
 		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
-			<version>1.2</version>
+			<version>2.0</version>
+			<scope>provided</scope>
 		</dependency>
 
 
@@ -92,6 +72,14 @@
 			<version>6.0.0.Final</version>
 		</dependency>
 
+		<!-- Project Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.sun.faces/jsf-api -->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
@@ -113,14 +101,12 @@
 			<version>1.6</version>
 		</dependency>
 
-		<!-- all-themes Primefaces -->
 		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>all-themes</artifactId>
-			<version>1.0.10</version>
+			<groupId>org.primefaces.omegamenu</groupId>
+			<artifactId>omega-menu</artifactId>
+			<version>2.0.1</version>
 		</dependency>
 
-		<!-- Primefaces -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
@@ -140,14 +126,6 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.36</version>
-		</dependency>
-
-		<!-- Project Lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.12</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
