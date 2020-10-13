@@ -18,6 +18,11 @@
 		<param-value>Development</param-value>
 	</context-param>
 
+	<context-param>
+		<param-name>facelets.SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
 	<!-- Configuração do Servlet do JSF -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
@@ -29,11 +34,13 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-	
-	<!-- Definição tema PrimeFaces 
-	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>home</param-value>
-	</context-param>
-	-->
+
+	<!-- WELD -->
+	<listener>
+		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+	</listener>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 </web-app>
