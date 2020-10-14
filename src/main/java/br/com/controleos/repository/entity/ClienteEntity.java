@@ -1,4 +1,4 @@
-package br.com.controleos.domain;
+package br.com.controleos.repository.entity;
 
 import java.util.Date;
 
@@ -11,6 +11,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import br.com.controleos.domain.AbstractEntity;
+import br.com.controleos.domain.Contato;
+import br.com.controleos.domain.Endereco;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -18,7 +21,7 @@ import lombok.EqualsAndHashCode;
 @Table(name = "cliente")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Cliente extends AbstractEntity {
+public class ClienteEntity extends AbstractEntity {
 
 	private static final long serialVersionUID = -7244420257032750452L;
 
